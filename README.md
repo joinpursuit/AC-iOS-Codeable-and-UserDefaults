@@ -460,3 +460,26 @@ struct User: Codable {
 	}
 }
 ```
+
+*Eventually*, we're going to want to convert the `Data?` returned from a `URLRequest` into one or more `User`. Though we're going to work backward by first attempting to converting a `User` into `Data`. :
+
+```swift
+let user = User(title: "Mr", firstName: "Louis", lastName: "Tur")
+let encodedUserData = try! PropertyListEncoder().encode(user)
+
+print("\n\n\n\n\nThe user is now data: \(encodedUserData)")
+```
+
+Ok, that was easy enough. How about doing the reverse now:
+
+```swift
+let decodedUser = try! PropertyListDecoder().decode(User.self, from: encodedUserData)
+print("The user is no longer data: \(decodedUser)")
+```
+
+![Converting User using Codable](./Images/user_to_data_and_back.png)
+
+>>>> TODO:
+1. Attempt to update code in existing request
+2. explain need for nesting considerations
+3. exercises! include nesting, using custom keys, enums/structs, and advanced will be dynamic keys
