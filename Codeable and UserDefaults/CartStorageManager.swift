@@ -29,8 +29,11 @@ class CartStorageManager {
 	class func loadCart() -> Cart {
 		let defaults = UserDefaults.standard
 		do {
-			let data = defaults.data(forKey: "userCartKey")
-			return try PropertyListDecoder().decode(Cart.self, from: data!)
+			guard let data = defaults.data(forKey: "userCartKey") else {
+				return Cart(items: [])
+			}
+			
+			return try PropertyListDecoder().decode(Cart.self, from: data)
 		}
 		catch {
 			print("Error loading cart: \(error)")
