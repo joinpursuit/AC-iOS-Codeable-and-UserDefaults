@@ -147,53 +147,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //			}
 //		}
 		
-//		struct User: Codable {
-//			let title: String
-//			let firstName: String
-//			let lastName: String
-//
-//			var fullName: String {
-//				return "\(title.capitalized) \(firstName.capitalized) \(lastName.capitalized)"
-//			}
-//
-//			init(json: [String:AnyObject]) {
-//				let nameJSON = json["name"] as! [String:String]
-//				let title = nameJSON["title"]
-//				let first = nameJSON["first"]
-//				let last = nameJSON["last"]
-//
-//				self.init(title: title!, first: first!, last: last!)
-//			}
-//
-//			init(title: String, first: String, last: String) {
-//				self.title = title
-//				self.firstName = first
-//				self.lastName = last
-//			}
-//		}
+		struct UserDecoder: Codable {
+			let results: [NameDecoder]
+		}
 		
-//		func retrieveUser() {
-//			makeRequest { (data: Data?) in
-//				if data != nil {
-//					do {
-//						let json = try JSONDecoder().decode(User.self, from: data!)
-//						print(json)
-//					}
-//					catch {
-//						print("Error casting from Data to JSON \(error)")
-//					}
-//				}
-//			}
-//		}
-//
-//		func makeRequest(completion: @escaping (Data?)-> Void) {
-//			let session = URLSession.shared
-//			session.dataTask(with: URL(string: "https://randomuser.me/api/?inc=name&noinfo")!) { (data: Data?, _, _) in
-//				completion(data)
-//			}.resume()
-//		}
-//
-//		retrieveUser()
+		struct NameDecoder: Codable {
+			let name: User
+		}
+		
+		struct User: Codable {
+			let title: String
+			let first: String
+			let last: String
+			
+			var fullName: String {
+				return "\(title.capitalized) \(first.capitalized) \(last.capitalized)"
+			}
+			
+			init(json: [String:AnyObject]) {
+				let nameJSON = json["name"] as! [String:String]
+				let title = nameJSON["title"]
+				let first = nameJSON["first"]
+				let last = nameJSON["last"]
+				
+				self.init(title: title!, first: first!, last: last!)
+			}
+			
+			init(title: String, first: String, last: String) {
+				self.title = title
+				self.first = first
+				self.last = last
+			}
+		}
+		
+		func retrieveUser() {
+			makeRequest { (data: Data?) in
+				if data != nil {
+					do {
+						let json = try JSONDecoder().decode(UserDecoder.self, from: data!)
+						print(json)
+					}
+					catch {
+						print("Error casting from Data to JSON \(error)")
+					}
+				}
+			}
+		}
+		
+		func makeRequest(completion: @escaping (Data?)-> Void) {
+			let session = URLSession.shared
+			session.dataTask(with: URL(string: "https://randomuser.me/api/?inc=name&noinfo")!) { (data: Data?, _, _) in
+				completion(data)
+			}.resume()
+		}
+		
+		retrieveUser()
 		
 //		let user = User(title: "Mr", firstName: "Louis", lastName: "Tur")
 //		let encodedUserData = try! PropertyListEncoder().encode(user)
@@ -227,30 +235,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //		print("Stored Preferences: \n\(storedPrefs.fontName), \(storedPrefs.fontSize), \(storedPrefs.darkMode)")
 //
 		
-		let cartItems: [CartItem] = [
-			CartItem(name: "iPhone", sku: 999, price: 700.00),
-			CartItem(name: "iMac", sku: 998, price: 2500.00),
-			CartItem(name: "iPad", sku: 997, price: 800.00)
-		]
-		
-		let cart = Cart(items: cartItems)
-		let cartManager = CartStorageManager(cart: cart)
-		
-		cart.addItem(CartItem(name: "Macbook Air", sku: 996, price: 1200.00))
-		_ = cart.items.map{
-			print($0.name)
-		}
-		cart.removeItem(cartItems[0])
-		_ = cart.items.map{
-			print($0.name)
-		}
-		
-		cartManager.saveCart()
-		
-		let newCart = CartStorageManager.loadCart()
-		_ = newCart.items.map{
-			print($0.name)
-		}
+//		let cartItems: [CartItem] = [
+//			CartItem(name: "iPhone", sku: 999, price: 700.00),
+//			CartItem(name: "iMac", sku: 998, price: 2500.00),
+//			CartItem(name: "iPad", sku: 997, price: 800.00)
+//		]
+//
+//		let cart = Cart(items: cartItems)
+//		let cartManager = CartStorageManager(cart: cart)
+//
+//		cart.addItem(CartItem(name: "Macbook Air", sku: 996, price: 1200.00))
+//		_ = cart.items.map{
+//			print($0.name)
+//		}
+//		cart.removeItem(cartItems[0])
+//		_ = cart.items.map{
+//			print($0.name)
+//		}
+//
+//		cartManager.saveCart()
+//
+//		let newCart = CartStorageManager.loadCart()
+//		_ = newCart.items.map{
+//			print($0.name)
+//		}
 		
 		return true
 	}
