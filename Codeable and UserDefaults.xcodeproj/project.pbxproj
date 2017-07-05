@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141BFD381F0D3F8800D4533B /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFD371F0D3F8800D4533B /* CartItem.swift */; };
+		141BFD3A1F0D3F9700D4533B /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFD391F0D3F9700D4533B /* Cart.swift */; };
+		141BFD3C1F0D3FA800D4533B /* CartStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141BFD3B1F0D3FA800D4533B /* CartStorageManager.swift */; };
+		141BFD3E1F0D450600D4533B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 141BFD3D1F0D450600D4533B /* Info.plist */; };
 		14709F331F057A53002E5D2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14709F321F057A53002E5D2E /* AppDelegate.swift */; };
 		14709F351F057A53002E5D2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14709F341F057A53002E5D2E /* ViewController.swift */; };
 		14709F381F057A53002E5D2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14709F361F057A53002E5D2E /* Main.storyboard */; };
@@ -26,13 +30,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		141BFD361F0D3F4800D4533B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		141BFD371F0D3F8800D4533B /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		141BFD391F0D3F9700D4533B /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		141BFD3B1F0D3FA800D4533B /* CartStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartStorageManager.swift; sourceTree = "<group>"; };
+		141BFD3D1F0D450600D4533B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14709F2F1F057A53002E5D2E /* Codeable and UserDefaults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Codeable and UserDefaults.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14709F321F057A53002E5D2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14709F341F057A53002E5D2E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		14709F371F057A53002E5D2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		14709F391F057A53002E5D2E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14709F3C1F057A53002E5D2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		14709F3E1F057A53002E5D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14709F431F057A53002E5D2E /* Codeable and UserDefaultsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Codeable and UserDefaultsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14709F471F057A53002E5D2E /* Codeable_and_UserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codeable_and_UserDefaultsTests.swift; sourceTree = "<group>"; };
 		14709F491F057A53002E5D2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +64,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		141BFD351F0D3F1700D4533B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14709F321F057A53002E5D2E /* AppDelegate.swift */,
+				141BFD3D1F0D450600D4533B /* Info.plist */,
+				141BFD361F0D3F4800D4533B /* Default-568h@2x.png */,
+				14709F361F057A53002E5D2E /* Main.storyboard */,
+				14709F391F057A53002E5D2E /* Assets.xcassets */,
+				14709F3B1F057A53002E5D2E /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		14709F261F057A53002E5D2E = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +98,11 @@
 		14709F311F057A53002E5D2E /* Codeable and UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				14709F321F057A53002E5D2E /* AppDelegate.swift */,
 				14709F341F057A53002E5D2E /* ViewController.swift */,
-				14709F361F057A53002E5D2E /* Main.storyboard */,
-				14709F391F057A53002E5D2E /* Assets.xcassets */,
-				14709F3B1F057A53002E5D2E /* LaunchScreen.storyboard */,
-				14709F3E1F057A53002E5D2E /* Info.plist */,
+				141BFD371F0D3F8800D4533B /* CartItem.swift */,
+				141BFD391F0D3F9700D4533B /* Cart.swift */,
+				141BFD3B1F0D3FA800D4533B /* CartStorageManager.swift */,
+				141BFD351F0D3F1700D4533B /* Supporting Files */,
 			);
 			path = "Codeable and UserDefaults";
 			sourceTree = "<group>";
@@ -177,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				141BFD3E1F0D450600D4533B /* Info.plist in Resources */,
 				14709F3D1F057A53002E5D2E /* LaunchScreen.storyboard in Resources */,
 				14709F3A1F057A53002E5D2E /* Assets.xcassets in Resources */,
 				14709F381F057A53002E5D2E /* Main.storyboard in Resources */,
@@ -198,7 +219,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				14709F351F057A53002E5D2E /* ViewController.swift in Sources */,
+				141BFD3C1F0D3FA800D4533B /* CartStorageManager.swift in Sources */,
+				141BFD381F0D3F8800D4533B /* CartItem.swift in Sources */,
 				14709F331F057A53002E5D2E /* AppDelegate.swift in Sources */,
+				141BFD3A1F0D3F9700D4533B /* Cart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +251,7 @@
 				14709F371F057A53002E5D2E /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		14709F3B1F057A53002E5D2E /* LaunchScreen.storyboard */ = {
@@ -235,6 +260,7 @@
 				14709F3C1F057A53002E5D2E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -347,7 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Codeable and UserDefaults/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Codeable and UserDefaults/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nyc.accesscode.Codeable-and-UserDefaults";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -360,7 +386,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Codeable and UserDefaults/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Codeable and UserDefaults/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nyc.accesscode.Codeable-and-UserDefaults";
 				PRODUCT_NAME = "$(TARGET_NAME)";
