@@ -289,20 +289,93 @@ Kinda amazing... there's a lot of powerful magic going on with this protocol. So
 ---
 ### 6.  `Codable` Exercises
 
->>> TODO
+#### `LoggedInUser`
 
+Now that we're storing a user's reading preferences successfully, let's also try storing some of their authentication information. Create a new class called `LoggedInUser`:
 
+```swift
+class LoggedInUser {
+	var username: String
+	var isPremium: Bool // if the user has a paid subscription
+	var lastLogin: Date
+}
+```
+Attempt to store and retrieve a new `LoggedInUser` from `UserDefaults`.
 
-Roadmap:
-1. Write a few exercises in codeable
-2. Return to `Codable` with JSON
-3. Include caveat to nesting
+#### Cart Items
 
+Let's now imagine that our app offers some in-app purchases that we'd like to store in `UserDefaults` so that if the user adds some items to their cart but doesn't purchase them right away, it will still be there when they return to the app.
 
+Let's begin with a `CartItem`, which will have a `name` for the product, a `sku` which will act as its unique identifier, and a `price` in dollars:
 
+```swift
+struct CartItem: Codable {
+	let name: String
+	let sku: Int
+	let price: Double
 
+	// Note: Adding the Codable protocol to this struct results in losing a struct's free initializer
+	// This is because Codable comes with an initiaizer: init(decoder:)
+	init(name: String, sku: Int, price: Double) {
+		self.name = name
+		self.sku = sku
+		self.price = price
+	}
+}
+```
 
+`CartItems` should be managed by a `Cart` object:
 
+```swift
+class Cart {
+	var items: [CartItem] = []
+
+	init(items: [CartItem]) {
+		self.items = items
+	}
+
+	// adds an items to the .items property
+	func addItem(_ item: CartItem) {
+	}
+
+	// attempts remove an item, returns true if successful. false otherwise
+	func removeItem(_ item: CartItem)  -> Bool {
+	}
+}
+```
+
+And lastly, saving and retrieving a cart should be done with a `CartStorageManager`
+
+```swift
+class CartStorageManager {
+	let cart: Cart
+
+	init(cart: Cart) {
+		self.cart = cart
+	}
+
+	// Saves the cart to UserDefaults
+	func saveCart() {
+	}
+
+	// Loads a Cart from UserDefaults if possible. If no cart is found stored in UserDefaults,
+	// this returns an empty Cart
+	class func loadCart() -> Cart {
+	}
+}
+```
+
+You're tasked with the following:
+
+1. Ensure that the necessary classes conform to `Codable` protocol in order to be able to save a `Cart`.
+	- Note: A `Cart` consists of itself and its `CartItem`s.
+	- Note: Do all of the classes listed need to conform to `Codable`, or just some of them?
+2. Create a few `CartItems` and add them to a `Cart`, test to make sure you're also able to remove them.
+3. Add in the code for `saveCart` and `loadCart` in the `CartStorageManager`. The code should add the ability to save a `Cart` to `UserDefaults` and then later load it.
+	- Be sure to test saving and loading! You should create a `Cart` with a few `CartItem`s in it, save the `Cart` to `UserDefaults` and then retrieve the `Cart`. After retrieving the `Cart`, make sure that it contains all of the items that were stored with it.
+	- Note: Nested `Codable` items work totally fine with `UserDefaults`!
+
+> Note: Rememeber to uncomment the tests to ensure your implementation works.
 
 ---
 ###  5. `Codable` with `JSON`
@@ -478,6 +551,15 @@ print("The user is no longer data: \(decodedUser)")
 ```
 
 ![Converting User using Codable](./Images/user_to_data_and_back.png)
+
+#### Using `User: Codable` with actual requests
+
+1. Add init w/ Data
+2. do codable parsing
+
+
+
+
 
 >>>> TODO:
 1. Attempt to update code in existing request
