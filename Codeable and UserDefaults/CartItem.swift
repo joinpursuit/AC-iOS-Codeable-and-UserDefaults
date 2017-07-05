@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CartItem: Codable {
+struct CartItem: Codable, Equatable {
 	let name: String
 	let sku: Int
 	let price: Double
@@ -17,5 +17,10 @@ struct CartItem: Codable {
 		self.name = name
 		self.sku = sku
 		self.price = price
+	}
+	
+	// Advanced
+	static func ==(_ lhs: CartItem, _ rhs: CartItem) -> Bool {
+		return lhs.sku == rhs.sku
 	}
 }

@@ -13,11 +13,11 @@
 
 ### 1. `Codable`: What a time to be alive!
 
-Many of you will be starting your journey of Swift data serialization with some incredibly powerful and easy-to-use tools. I of course am refering to the `Codable` protocol, introduced in Swift 4 to save developers from the agony that is de/serializing `Data`.
+Many of you will be starting your journey of Swift data serialization with some incredibly powerful and easy-to-use tools. I, of course, am refering to the `Codable` protocol which was introduced in Swift 4 to save developers from the agony that is de/serializing `Data`.
 
 #### Serialization: What is it?
 
-Serialization, in development, refers to converting an object/struct/var into raw data, essentially 0's and 1's (well, 0's and F's). Serialization is performed when you need to store language/code-specific objects into persistant storage. Then later, when you need to retrieve the object from memory you de-serialize it, meaning you convert it from its raw binary back into useable objects in code.
+Serialization, in development, refers to converting an object/struct/var into raw data, essentially 0's and 1's. Serialization is performed when you need to store language/code-specific objects into persistant storage. Then later, when you need to retrieve the object from memory you de-serialize it, meaning you convert it from its raw binary back into useable objects in code.
 
 #### Serialization: Where does it happen?
 
@@ -46,6 +46,7 @@ The intended use of `UserDefaults` is in the name: you want to store a user's de
 
 `UserDefaults` is a really great option for storing simple data types -- in fact, it only can natively store Swift or Foundation types. This includes (these Foundation objects are bridged to their Swift equivalents):
 
+```
 - NSData
 - NSString
 - NSNumber
@@ -57,8 +58,9 @@ The intended use of `UserDefaults` is in the name: you want to store a user's de
 - NSDate
 - NSArray
 - NSDictionary
+```
 
-The tricky part is if you want to store objects that you've defined in code.
+The tricky part is if you want to store custom objects that you've defined in code.
 
 ---
 ### 3. Trying out `UserDefaults`
@@ -201,7 +203,7 @@ let advancedStructure: [String : Any] = [
 ```
 
 ---
-### 4. `Codable` Storage
+### 4. `PropertyListEncoder/Decoder`
 
 Let's say we have an object called `ReadingPreference` that is suppose to track a user's preferences when reading in an app:
 
@@ -235,10 +237,10 @@ Go ahead and run this...
 
 ![Non-Swift Type UserDefaults Error](./Images/userdefaults_throws.png)
 
-What happened exactly? Remember that `UserDefaults` has no problem storing native Swift data types listed earlier. What it *cannot* do is store custom objects that you've defined in code. If you try to do this, an exception is thrown and your app will crash. Though, to get around this, we can (very) simply implement the `Codable` protocol:
+What happened exactly? Remember that `UserDefaults` has no problem storing native Swift data types listed earlier. What it *cannot* do is store custom objects that you've defined in code. If you try to do this, an exception is thrown and your app will crash. To get around this, we can (very) simply implement the `Codable` protocol:
 
 ```swift
-// WHAT? all we do is add the Codable protocol and nothing else??? 👍
+// WHAT? all we do is add the Codable protocol keyword and nothing else??? 👍
 class ReadingPreference: Codable {
 	var fontName: String
 	var fontSize: Float
@@ -367,6 +369,8 @@ class CartStorageManager {
 
 You're tasked with the following:
 
+> Note: Rememeber to uncomment the tests to ensure your implementation works.
+
 1. Ensure that the necessary classes conform to `Codable` protocol in order to be able to save a `Cart`.
 	- Note: A `Cart` consists of itself and its `CartItem`s.
 	- Note: Do all of the classes listed need to conform to `Codable`, or just some of them?
@@ -374,5 +378,8 @@ You're tasked with the following:
 3. Add in the code for `saveCart` and `loadCart` in the `CartStorageManager`. The code should add the ability to save a `Cart` to `UserDefaults` and then later load it.
 	- Be sure to test saving and loading! You should create a `Cart` with a few `CartItem`s in it, save the `Cart` to `UserDefaults` and then retrieve the `Cart`. After retrieving the `Cart`, make sure that it contains all of the items that were stored with it.
 	- Note: Nested `Codable` items work totally fine with `UserDefaults`!
+4. (Advanced) Have your `CartItem` and `Cart` objects conform to `Equatable`. Implement anyway you see fit, but take into account that `sku` property of `CartItem` is suppose to be unique. Be sure to update your code where needed to make use of your new protocol conformance.
 
-> Note: Rememeber to uncomment the tests to ensure your implementation works.
+#### Reading Resource for Advanced:
+
+1. [Equatable and Comparable - Use Your Loaf](https://useyourloaf.com/blog/swift-equatable-and-comparable/)
