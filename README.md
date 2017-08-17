@@ -1,16 +1,17 @@
 # AC-iOS Codable and UserDefaults (Swift 4.x)
 
----
 ### Readings
 1. [Ultimate Guide to Parsing With Swift](http://benscheirman.com/2017/06/ultimate-guide-to-json-parsing-with-swift-4/?utm_campaign=iOS%2BDev%2BWeekly&utm_medium=email&utm_source=iOS_Dev_Weekly_Issue_306)
 1. [An Introduction to NSUserDefaults](http://www.codingexplorer.com/nsuserdefaults-a-swift-introduction/)
 
-### 0. Overall Goals
+---
+### 0. Objectives
 
 1. Become familiar with using `UserDefaults` to store data
 2. Understand that `UserDefaults` is a light-weight, persistant storage option for small amounts of data that relate to how your app should be configured, based on the user's selection/choices.
 3. Become with the `Codable` protocol that allows for easy conversion between Swift objects and storeable `Data`
 
+---
 ### 1. `Codable`: What a time to be alive!
 
 Many of you will be starting your journey of Swift data serialization with some incredibly powerful and easy-to-use tools. I, of course, am refering to the `Codable` protocol which was introduced in Swift 4 to save developers from the agony that is de/serializing `Data`.
@@ -286,12 +287,12 @@ print("Stored Preferences: \n\(storedPrefs.fontName), \(storedPrefs.fontSize), \
 
 ![Codable Working](./Images/codable_prefs.png)
 
-Kinda amazing... there's a lot of powerful magic going on with this protocol. Someday, you should go and look up the source code for it.  But for now, let's just play around with some code examples:
+Kinda amazing... there's a lot of powerful magic going on with this protocol. Someday, you should go and look up the source code for it.  But for now, let's just play around with some code examples.
 
 ---
-### 6.  `Codable` Exercises
+### 5.  `Codable` Exercises
 
-#### WarmUp: `LoggedInUser`
+#### Ex 1. WarmUp: `LoggedInUser`
 
 Now that we're storing a user's reading preferences successfully, let's also try storing some of their authentication information. Create a new class called `LoggedInUser`:
 
@@ -302,9 +303,9 @@ class LoggedInUser {
 	var lastLogin: Date
 }
 ```
-Attempt to store and retrieve a new `LoggedInUser` from `UserDefaults`.
+**Task: Attempt to store and retrieve a new `LoggedInUser` from `UserDefaults`.**
 
-#### In the Mix: `Cart`!
+#### Ex 2. In the Mix: `Cart`
 
 Let's now imagine that our app offers some in-app purchases that we'd like to store in `UserDefaults` so that if the user adds some items to their cart but doesn't purchase them right away, it will still be there when they return to the app.
 
@@ -367,7 +368,7 @@ class CartStorageManager {
 }
 ```
 
-You're tasked with the following:
+**You're tasked with the following:**
 
 > Note: Rememeber to uncomment the tests to ensure your implementation works.
 
