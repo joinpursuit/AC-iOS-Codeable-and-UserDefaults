@@ -8,7 +8,7 @@
 ### 0. Objectives
 
 1. Become familiar with using `UserDefaults` to store data
-2. Understand that `UserDefaults` is a light-weight, persistant storage option for small amounts of data that relate to how your app should be configured, based on the user's selection/choices.
+2. Understand that `UserDefaults` is a light-weight, persistent storage option for small amounts of data that relate to how your app should be configured, based on the user's selection/choices.
 3. Become with the `Codable` protocol that allows for easy conversion between Swift objects and storeable `Data`
 
 ---
